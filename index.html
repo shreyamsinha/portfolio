@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShreyamSinhaPortfolio</title> <!-- Updated title -->
+    <!-- CSS files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta name="author" content="Shreyam Sinha">
+
+    <style>
+        /* General Styling */
+        body {
+            background: linear-gradient(to right, #e3f2fd, #d1c4e9); /* Gradient from light blue to light purple */
+            color: #333; /* Dark text color for readability */
+            font-family: 'Arial', sans-serif;
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Navbar styles... */
+        .nav {
+            background-color: #333;
+            color: #fff;
+            width: 100%; /* Make the navbar full width */
+            position: sticky; /* Keep the navbar at the top */
+            top: 0; /* Position from the top */
+            z-index: 1000; /* Ensure it's on top of other content */
+        }
+
+        .nav a {
+            color: #fff;
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: #555; /* Highlight active link */
+            color: #f4f4f9;
+        }
+
+        /* About Section styles... */
+        .section-1 {
+            background-color: #fff;
+            padding: 3rem 1.5rem;
+            color: #333;
+            text-align: center; /* Center text */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007BFF; /* Border for the image */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s; /* Add hover effect */
+        }
+
+        .avatar:hover {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        /* Name Styling */
+        .name {
+            font-size: 2.5rem; /* Increase font size */
+            font-weight: bold;  /* Make text bold */
+            margin-top: 1rem;   /* Space above the name */
+            color: #333;        /* Ensure the text color is consistent */
+        }
+
+        /* Project Section */
+        .section-2 {
+            background-color: #fff;
+            padding: 3rem 1.5rem;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid #007BFF; /* Rectangular blue border */
+            transition: transform 0.3s ease; /* Add transition for the box */
+            cursor: pointer; /* Indicate it's clickable */
+        }
+
+        .image.project-figure img {
+            width: 100%; /* Make images responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Slightly rounded corners */
+            transition: transform 0.3s ease, border-color 0.3s ease; /* Smooth transition for transform and border color */
+        }
+
+        /* Add hover effect for image */
+        .image.project-figure:hover img {
+            transform: scale(1.05); /* Slightly scale the image */
+            border-color: #0056b3; /* Change border color on hover */
+        }
+
+        /* Add hover effect for the box */
+        .box:hover {
+            transform: scale(1.02); /* Slightly scale the box */
+        }
+
+        /* Transition for text */
+        .box p {
+            transition: color 0.3s ease; /* Add transition for text color */
+        }
+
+        .box:hover p {
+            color: #007BFF; /* Change text color on box hover */
+        }
+
+        /* Certifications Section */
+        .section-4 {
+            background-color: #fff; /* Light background for certifications */
+            padding: 3rem 1.5rem;
+            margin-top: 2rem; /* Margin to create space between sections */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        .certifications-header {
+            margin-bottom: 1.5rem; /* Space after the heading */
+            color: #007BFF; /* Blue color for the heading */
+            font-size: 1.8rem; /* Larger font size */
+            font-weight: bold; /* Bold text */
+        }
+
+        .certification-list {
+            list-style: none; /* Remove default list styling */
+            padding: 0; /* Remove padding */
+            text-align: left; /* Align text to the left */
+        }
+
+        .certification-list li {
+            padding: 0.5rem 0; /* Space between items */
+            font-size: 1.1rem; /* Slightly larger font size */
+            border-bottom: 1px solid #ddd; /* Light bottom border for separation */
+        }
+
+        .certification-list li:last-child {
+            border-bottom: none; /* Remove border from the last item */
+        }
+
+        /* Resume Section */
+        .section-6 {
+            background-color: #fff; /* Light background for the resume section */
+            padding: 3rem 1.5rem; /* Padding for spacing */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            margin-top: 2rem; /* Space between sections */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        .button.is-large {
+            margin-top: 1rem; /* Space above the button */
+            transition: background-color 0.3s; /* Smooth background transition */
+        }
+
+        .button.is-large:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Coding History Section */
+        .section-7 {
+            background-color: #fff; /* Light background for the coding history */
+            padding: 3rem 1.5rem; /* Padding for spacing */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            margin-top: 2rem; /* Space between sections */
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        /* Social Section */
+        .section-3 {
+            background-color: #f0f4f8; /* Light background for social section */
+            padding: 3rem 1.5rem;
+            opacity: 0; /* Start hidden */
+            animation: fadeIn 1s forwards; /* Fade-in effect */
+        }
+
+        .social-container img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s;
+            border: 2px solid #007BFF; /* Consistent blue border */
+            border-radius: 10px;
+        }
+
+        .social-container img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer Section */
+        .section-5 {
+            background-color: #007BFF; /* Keep the footer blue */
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .columns .column {
+                flex-basis: 100%; /* Stack columns on small screens */
+                margin-right: 0; /* Remove right margin */
+                margin-bottom: 1rem; /* Add bottom margin */
+            }
+
+            .nav {
+                flex-direction: column; /* Stack navbar items */
+                align-items: center; /* Center navbar items */
+            }
+        }
+
+        /* Keyframes for fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0; /* Start fully transparent */
+                transform: translateY(20px); /* Start slightly lower */
+            }
+            to {
+                opacity: 1; /* End fully visible */
+                transform: translateY(0); /* End at original position */
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            width: 80%; /* Could be more or less, depending on screen size */
+            color: white; /* White text */
+        }
+
+        .close {
+            color: #aaa; /* Light gray */
+            float: right; /* Float right */
+            font-size: 28px; /* Big */
+            font-weight: bold; /* Bold */
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white; /* Change color on hover */
+            text-decoration: none; /* Remove underline */
+            cursor: pointer; /* Pointer cursor */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <div class="nav-left">
+            <a href="https://github.com/shreyamsinha" class="nav-item">
+                <span class="icon">
+                    <i class="fa fa-github"></i>
+                </span>
+            </a>					
+        </div>
+
+        <div class="nav-right nav-menu">
+            <a class="nav-item" href="#about">About</a>
+            <a class="nav-item" href="#projects">Projects</a>
+            <a class="nav-item" href="#certifications">Certifications</a> <!-- Added link to certifications -->
+            <a class="nav-item" href="#resume">Resume</a> <!-- Added link to Resume -->
+            <a class="nav-item" href="#coding-history">Coding History</a> <!-- Added link to Coding History -->
+            <a class="nav-item" href="#social">Social</a>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </nav>
+			
+    <!-- About Me -->
+    <section id="about" class="section section-1">
+        <div class="container has-text-centered">
+            <img class="avatar" src="shree1.jpg">
+            <h1 class="name">Shreyam Sinha</h1> <!-- Updated name styling -->
+        </div>
+        <div class="container"></br>
+            <p class="intro">
+                I am a dedicated B.Tech student specializing in AI and Machine Learning at Chandigarh University. Proficient in Python, C++, and data science, I have worked on projects involving fraud detection, chatbot development, and text summarization. My expertise spans machine learning models, Python libraries, and data structures, with a focus on building efficient and precise solutions. I am passionate about leveraging AI technologies to solve real-world problems and continuously hone my skills in AI-driven innovations.
+            </p>
+        </div>
+    </section>
+	
+    <!-- Projects -->
+    <section id="projects" class="section section-2">
+        <div class="container">
+            <div class="has-text-centered">
+                <h3 class="title is-3 projects-header">Projects</h3> <!-- Added class for margin -->
+                <hr style="border: 1px solid #007BFF; margin: 1.5rem 0;"> <!-- Inserted horizontal line -->
+            </div>
+
+            <div class="columns is-desktop">
+                <!-- Project 1 -->
+                <div class="column">
+                    <div class="box project-text" onclick="openModal('modal1')">
+                        <article>
+                            <div class="has-text-centered">
+                                <figure class="image project-figure">
+                                    <img src="Screenshot 2024-09-28 130650.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div>      
+                                <p>Real-time feedback detection using emotion detection and facial recognition.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="column">
+                    <div class="box project-text" onclick="openModal('modal2')">
+                        <article>
+                            <div class="has-text-centered">
+                                <figure class="image project-figure">
+                                    <img src="Screenshot (296).png" alt="Image">
+                                </figure>
+                            </div>
+                            <div>      
+                                <p>Text Summarization Tool using Machine Learning | Role: Worked on creating an accurate, precise, and diverse model.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Certifications -->
+    <section id="certifications" class="section section-4"> <!-- Added certifications section -->
+        <div class="container">
+            <div class="has-text-centered">
+                <h3 class="title is-3 certifications-header">Certifications</h3> <!-- Header for certifications -->
+            </div>
+            <ul class="certification-list">
+                <li>Azure AI 102 (Microsoft Certified)</li>
+                <li>C Programming Language (Udemy)</li>
+                <li>C++ Programming Language (Codechef)</li>
+                <li>Basics of Robotics (TechAnalogy event, Robotron certified course)</li>
+                <li>Python (Coursera)</li>
+                <li>Data Structures and Algorithms (Skill-up certified)</li>
+                <li>HTML & CSS (PrepInsta)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section section-6">
+        <div class="container">
+            <div class="has-text-centered">
+                <h3 class="title is-3">Resume</h3> <!-- Header for Resume -->
+                <p class="intro">Download my resume to learn more about my skills and experience.</p>
+                <a href="Resumenew- ShreyamSinha.pdf" class="button is-primary is-large" download>Download Resume</a>
+                <!-- Replace 'path/to/your/resume.pdf' with the actual path to your resume file -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Coding History Section -->
+    <section id="coding-history" class="section section-7">
+        <div class="container">
+            <div class="has-text-centered">
+                <h3 class="title is-3">Coding History</h3>
+                <p class="intro">Explore my profiles on various coding platforms:</p>
+            </div>
+            <div class="columns is-desktop">
+                <!-- Geek For Geeks -->
+                <div class="column is-4 has-text-centered">
+                    <a href="https://www.geeksforgeeks.org/user/shreyamsa02r/" target="_blank">
+                        <div class="box">
+                            <h4 class="title is-4">Geek For Geeks</h4>
+                            <img src="Screenshot 2024-09-28 142757.png" alt="Geek For Geeks" style="width: 100px; height: auto;">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- LeetCode -->
+                <div class="column is-4 has-text-centered">
+                    <a href="https://leetcode.com/u/Shreyam_Sinha/" target="_blank">
+                        <div class="box">
+                            <h4 class="title is-4">LeetCode</h4>
+                            <img src="Screenshot 2024-09-28 143926.png" alt="LeetCode" style="width: 100px; height: auto;">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- CodeChef -->
+                <div class="column is-4 has-text-centered">
+                    <a href="https://www.codechef.com/users/shreyamsinha" target="_blank">
+                        <div class="box">
+                            <h4 class="title is-4">CodeChef</h4>
+                            <img src="Screenshot 2024-09-28 144101.png" alt="CodeChef" style="width: 100px; height: auto;">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Social -->
+    <section id="social" class="section section-3">
+        <div class="container">
+            <div class="has-text-centered">					
+                <h3 class="title is-3">Let's Socialize</h3>
+            </div>
+            <div class="social-container columns">
+                <div class="column is-6 has-text-centered">
+                    <a target="_blank" href="https://www.linkedin.com/in/shreyam-sinha-327338250/">
+                        <img src="Screenshot 2024-09-28 140039.png">
+                    </a>
+                </div>
+                <div class="column is-6 has-text-centered">
+                    <a href="mailto:shreyamsinha098@gmail.com" class="email-link">
+                        <img src="Screenshot 2024-09-28 143230.png" alt="Email Me" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>	
+	
+    <!-- Footer -->
+    <section class="section-5 has-text-centered container">
+        <a>Shreyam Sinha</a>
+    </section>
+	
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Real-time Feedback Detection</h2>
+            <p>This project involves using emotion detection and facial recognition technologies to provide real-time feedback in various applications.</p>
+            <img src="Screenshot 2024-09-28 130650.png" alt="Project Image" style="width:100%">
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Text Summarization Tool</h2>
+            <p>This project focuses on summarizing texts using machine learning techniques, making it easier to digest large amounts of information.</p>
+            <img src="Screenshot (296).png" alt="Project Image" style="width:100%">
+        </div>
+    </div>
+
+    <!-- Scripts  -->
+    <script>
+        // Function to open the modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close the modal when clicking outside of the content
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>	
+</html>
